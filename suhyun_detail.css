@@ -1,0 +1,142 @@
+body {
+    /* 페이지의 기본 글꼴과 레이아웃 설정 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.breadcrumb {
+    /* 브레드크럼 스타일 설정 */
+    margin: 10px;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.breadcrumb a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.product-detail {
+    /* 상품 상세 섹션의 레이아웃을 유연하게 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin: 40px auto;
+    max-width: 100%;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+/* 이미지 및 텍스트 정렬과 스타일 설정 */
+.product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    font-size: 20px;
+    color: #333;
+    border: 1px solid #ddd;
+    flex: 1;
+    max-width: 400px;
+    height: auto;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: auto;
+}
+
+.product-info {
+    max-width: 600px;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    position: relative;
+}
+
+hr {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.wishlist-btn {
+    font-size: 36px;
+    color: red;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+.related-products {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.related-products h2 {
+    margin-bottom: 20px;
+}
+
+.recommendations {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.recommendation {
+    text-align: center;
+    width: 150px;
+    text-decoration: none;
+    color: black;
+}
+
+.recommendation:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.recommendation-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* 공통 메시지 팝업 스타일 */
+.popup-message {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.popup-message.show {
+    opacity: 1;
+}

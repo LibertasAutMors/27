@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- HTML 페이지의 기본 설정과 외부 스타일시트 및 폰트 연결 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>술 상세 페이지</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="detail.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="header">
+  <!-- 상단 메뉴 버튼 및 검색 버튼을 포함한 헤더 -->
+  <span class="menu-button" onclick="openNav()">&#9776;</span>
+  <h1>홈페이지 이름</h1>
+  <div class="search-container">
+    <button onclick="openSearchOverlay()">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
+
+<!-- 제목 밑이 아닌, 상단바 아래에 페이지 설명 부분 -->
+<div class="page-subtitle-bar">
+  <p>술 상세 페이지</p>
+</div>
+
+<!-- 사이드바 네비게이션 -->
+<div id="mySidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="login-text">
+        <span>로그인이 필요합니다.</span>
+        <a href="#" class="login-btn">로그인</a>
+      </div>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+  
+   <!-- 카테고리 및 메뉴 -->
+   <!-- 술 검색 클릭 시 index.html로 이동 -->
+   <a href="index.html">술 검색</a>
+  
+   <!-- 아코디언 메뉴: 다양한 주류 분류 -->
+   <button class="accordion">주류별<span class="icon">∨</span></button>
+   <div class="panel">
+     <button class="accordion" onclick="filterCategory('양조주')">양조주<span class="icon">∨</span></button>
+     <!-- 서브 카테고리 -->
+     <div class="panel">
+       <a href="#" onclick="filterCategory('곡주')">곡주</a>
+       <a href="#" onclick="filterCategory('과일주')">과일주</a>
+     </div>
+  
+     <!-- 증류주 카테고리 -->
+     <button class="accordion" onclick="filterCategory('증류주')">증류주<span class="icon">∨</span></button>
+     <div class="panel">
+       <a href="#" onclick="filterCategory('브랜디')">브랜디</a>
+       <a href="#" onclick="filterCategory('럼')">럼</a>
+       <a href="#" onclick="filterCategory('데킬라')">데킬라</a>
+       <a href="#" onclick="filterCategory('위스키')">위스키</a>
+       <a href="#" onclick="filterCategory('보드카')">보드카</a>
+     </div>
+  
+     <!-- 혼성주 카테고리 -->
+     <button class="accordion" onclick="filterCategory('혼성주')">혼성주<span class="icon">∨</span></button>
+     <div class="panel">
+       <a href="#" onclick="filterCategory('하이볼')">하이볼</a>
+       <a href="#" onclick="filterCategory('칵테일')">칵테일</a>
+     </div>
+  
+     <!-- 전통주 카테고리 -->
+     <button class="accordion" onclick="filterCategory('전통주')">전통주<span class="icon">∨</span></button>
+     <div class="panel">
+       <a href="#" onclick="filterCategory('일반기업 전통주')">일반기업 전통주</a>
+       <a href="#" onclick="filterCategory('지역별 전통주')">지역별 전통주</a>
+     </div>
+   </div>
+  
+   <a href="#">인기 술</a>
+    <a href="#">공지사항</a>
+    <a href="#">Q&A</a>
+  </div>
+
+<!-- 상품 상세 정보 -->
+<div class="product-detail">
+    <div class="product-image">
+
+        <!-- 이미지 플레이스홀더 -->
+        <div class="image-placeholder">
+            400 x 500
+        </div>
+    </div>
+    <div class="product-info">
+        <!-- 관심상품 버튼 -->
+        <span class="wishlist-btn" id="wishlist-btn">🤍</span>
+
+        <!-- 브레드크럼 (네비게이션 경로) -->
+        <div class="breadcrumb" id="breadcrumb">
+            <a href="#" id="home-link">홈</a> >
+            <a href="index.html" id="category-link">술 검색</a> >
+            <a href="#" id="main-category-link">술 종류</a> >
+            <a href="#" id="sub-category-link">세부 종류</a> >
+            <span id="product-name-link">술 이름</span>
+        </div>
+        <hr>
+
+        <!-- 상품의 세부 정보 (이름, 종류, 생산지, 도수 등) -->
+        <div class="info-section">
+            <h1 id="product-name">술 이름</h1>
+            <p><strong>종류:</strong> <span id="product-type"></span></p>
+            <p><strong>생산지:</strong> <span id="product-origin"></span></p>
+            <p><strong>알코올 도수:</strong> <span id="product-abv"></span></p>
+            <p><strong>상품 설명:</strong> <span id="product-description"></span></p>
+            <p><strong>맛 설명:</strong> <span id="product-flavor"></span></p>
+            <p><strong>가격:</strong> <span id="product-price"></span></p>
+            <p><strong>평점:</strong> <span id="product-rating" class="star-rating"></span></p>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- 비슷한 상품 추천 -->
+<div class="related-products">
+    <h2>비슷한 상품 추천</h2>
+    <div class="recommendations">
+        <a href="detail.html?product=product1" class="recommendation">
+            <img src="product1.jpg" alt="추천 상품 1" class="recommendation-img">
+            <p>추천 상품 1</p>
+        </a>
+        <a href="detail.html?product=product2" class="recommendation">
+            <img src="product2.jpg" alt="추천 상품 2" class="recommendation-img">
+            <p>추천 상품 2</p>
+        </a>
+        <a href="detail.html?product=product3" class="recommendation">
+            <img src="product3.jpg" alt="추천 상품 3" class="recommendation-img">
+            <p>추천 상품 3</p>
+            <!-- 추가 추천 상품 -->
+        </a>
+    </div>
+</div>
+
+<!-- 검색 오버레이 -->
+<div id="searchOverlay" class="search-overlay">
+  <div class="overlay-content">
+    <span class="close-search" onclick="closeSearchOverlay()">&times;</span>
+    <div class="search-box">
+      <input type="text" id="searchInput" class="search-input" placeholder="검색어를 입력하세요...">
+      <button class="search-btn" onclick="performSearch()">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 팝업 메시지 및 스크립트 로딩 -->
+<div id="wishlist-message" class="popup-message" style="display:none;"></div>
+<div id="login-message" class="popup-message" style="display:none;">
+    <p>로그인 후 관심상품 등록을 해주세요.</p>
+</div>
+
+<script src="productData.js"></script>
+<script src="detail.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
